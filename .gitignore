@@ -1,0 +1,19 @@
+# Python garbage
+__pycache__/
+*.pyc
+
+# Virtual Environment (NEVER upload this)
+venv/
+.env
+
+# Large Data & Models (Upload these to Google Drive/One Drive if needed, not GitHub)
+MP_Data/
+*.h5
+models/
+*.caffemodel
+
+# Flutter/Mobile garbage
+App_Frontend/build/
+App_Frontend/.dart_tool/
+App_Frontend/.flutter-plugins
+App_Frontend/.flutter-plugins-dependencies

@@ -1,0 +1,41 @@
+name: smart_retail_app
+description: Enterprise Smart Retail Surveillance App.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Networking
+  http: ^0.13.6            # For calling our Flask API
+
+  # State Management
+  provider: ^6.0.5        # To manage app state (User login, etc.)
+
+  # Local Storage
+  shared_preferences: ^2.2.0  # To remember the user's login token
+
+  # Video Streaming
+  # We use flutter_mjpeg because standard video players often struggle 
+  # with the MJPEG format that Python webcams use.
+  flutter_mjpeg: ^2.0.0
+  
+  # UI Utilities
+  intl: ^0.18.1           # For formatting dates (e.g., "2023-10-15")
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  
+  # We will add assets later if needed
+  # assets:
+  #   - assets/images/
