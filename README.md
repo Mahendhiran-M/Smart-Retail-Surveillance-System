@@ -12,20 +12,10 @@ A comprehensive retail management system with shoplifting detection capabilities
 
 ## Getting Started
 
-[Add setup instructions here]
-
 ## Features
-
-[Add features here]
 
 ## Installation
 
-[Add installation steps here]
-
 ## Usage
 
-[Add usage instructions here]
-
 ## License
-
-[Add license information here]
