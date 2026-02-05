@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
 
   # Networking
-  http: ^0.13.6            # For calling our Flask API
+  http: ^1.1.0            # Updated for better Dart 3 compatibility
 
   # State Management
   provider: ^6.0.5        # To manage app state (User login, etc.)
@@ -22,16 +22,26 @@ dependencies:
   # Video Streaming
   # We use flutter_mjpeg because standard video players often struggle 
   # with the MJPEG format that Python webcams use.
-  flutter_mjpeg: ^2.0.0
+  flutter_mjpeg: ^2.0.4
   
   # UI Utilities
   intl: ^0.18.1           # For formatting dates (e.g., "2023-10-15")
   cupertino_icons: ^1.0.2
 
-dev_dependencies:
+dev_dependencies: 
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  
+  # ✅ ADDED THIS TO FIX YOUR ERROR
+  flutter_lints: ^3.0.0
+  
+  flutter_launcher_icons: ^0.13.1  
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/app_icon.jpeg"
+  min_sdk_android: 21 # Recommended
 
 flutter:
   uses-material-design: true
