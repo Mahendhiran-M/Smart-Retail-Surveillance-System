@@ -1,0 +1,14 @@
+# shoplifting_data.yaml
+
+# 1. Provide the absolute path to your dataset folder
+path: ./dataset_support  
+
+# 2. Specify the subfolders for training and validation
+train: images/train
+val: images/val
+test: images/test  # Optional
+
+# 3. Define your classes (The Kaggle labels usually follow this order)
+names:
+  0: normal
+  1: suspicious

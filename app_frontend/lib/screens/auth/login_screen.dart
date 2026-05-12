@@ -13,7 +13,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Controllers to capture user input
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -29,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final username = _usernameController.text.trim();
     final password = _passwordController.text.trim();
 
-    // FIXED: Use String Interpolation (cleaner code)
+    // Create the Basic Auth string
     final String basicAuth =
         'Basic ${base64Encode(utf8.encode('$username:$password'))}';
 
@@ -37,8 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
       final response = await http.post(
         Uri.parse(AppConstants.loginEndpoint),
         headers: <String, String>{
-          'authorization': basicAuth,
+          'Authorization': basicAuth,
           'Content-Type': 'application/json',
+          'Accept': '*/*',
         },
       );
 
@@ -46,13 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
         final data = jsonDecode(response.body);
         final token = data['token'];
 
-        // Save token for future auto-login
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('auth_token', token);
         await prefs.setString('username', username);
 
         if (mounted) {
-          // Navigate to Dashboard
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (_) => const DashboardScreen()),
@@ -60,14 +58,17 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       } else {
         setState(() {
-          _errorMessage = "Invalid Credentials (401)";
+          _errorMessage =
+              "Login Failed (${response.statusCode}): Incorrect Credentials";
         });
+        debugPrint(
+            "Server Response: ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
       setState(() {
-        _errorMessage = "Connection Error. Check IP in constants.dart";
+        _errorMessage = "Server unreachable. Check Python terminal.";
       });
-      debugPrint("Login Error: $e");
+      debugPrint("Login Exception: $e");
     } finally {
       setState(() {
         _isLoading = false;
@@ -86,17 +87,14 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               const Icon(Icons.security, size: 80, color: Colors.blueAccent),
               const SizedBox(height: 20),
-
               Text(
-                "SMART RETAIL GUARD",
+                "Enter Valid Credentials",
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1.5,
                     ),
               ),
               const SizedBox(height: 40),
-
-              // Username Field
               TextField(
                 controller: _usernameController,
                 decoration: const InputDecoration(
@@ -106,8 +104,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // Password Field
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -117,26 +113,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   border: OutlineInputBorder(),
                 ),
               ),
-
               const SizedBox(height: 20),
-
-              // Error Message
               if (_errorMessage != null)
                 Text(
                   _errorMessage!,
-                  style: const TextStyle(color: Colors.redAccent),
+                  style: const TextStyle(
+                      color: Colors.redAccent, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
                 ),
-
               const SizedBox(height: 20),
-
-              // Login Button
               SizedBox(
                 width: double.infinity,
+                height: 50,
                 child: _isLoading
                     ? const Center(child: CircularProgressIndicator())
                     : ElevatedButton(
                         onPressed: _login,
-                        child: const Text("LOGIN"),
+                        child:
+                            const Text("LOGIN", style: TextStyle(fontSize: 16)),
                       ),
               ),
             ],

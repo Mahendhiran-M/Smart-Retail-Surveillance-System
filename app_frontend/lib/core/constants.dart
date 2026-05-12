@@ -5,7 +5,7 @@ class AppConstants {
   // Run 'ipconfig' in terminal to find it.
   // Example: "192.168.1.10"
   // ---------------------------------------------------
-  static const String baseUrl = "http://192.168.29.64:5000";
+  static const String baseUrl = "http://10.158.176.135:5000";
 
   // API Endpoints
   static const String loginEndpoint = "$baseUrl/login";
@@ -13,6 +13,6 @@ class AppConstants {
   static const String videoStream = "$baseUrl/video_feed";
 
   // App Strings
-  static const String appName = "Smart Retail Guard";
+  static const String appName = "Smart Retail System";
   static const String adminRole = "admin";
 }

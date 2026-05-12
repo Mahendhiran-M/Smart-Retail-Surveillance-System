@@ -1,15 +1,15 @@
 import cv2
 from ultralytics import YOLO
 import numpy as np
-
+import os
 class DetectionEngine:
-    """
-    Stage 1: Primary Detection & Tracking
-    Uses YOLOv8-Pose to detect people and identifying basic suspicious zones.
-    """
     def __init__(self, model_path='yolov8n-pose.pt'):
-        print("[INFO] Loading YOLOv8 Pose Model...")
-        self.model = YOLO(model_path)
+        # Get the absolute path to the file in the current directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        local_model_path = os.path.join(current_dir, 'yolov8n-pose.pt')
+        
+        print(f"[INFO] Loading YOLOv8 Pose Model from: {local_model_path}")
+        self.model = YOLO(local_model_path)
         
         # Tracking history: {track_id: suspicion_score}
         self.track_history = {}
