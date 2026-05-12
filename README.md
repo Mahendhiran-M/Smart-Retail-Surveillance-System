@@ -7,29 +7,30 @@
 
 A real-time **AI-powered anti-theft system** designed for retail environments. This project utilizes a **Hybrid AI Pipeline** (YOLOv8 + MediaPipe LSTM) to detect shoplifting behaviors (like concealing items in pockets) and sends instant alerts via **WhatsApp** to a mobile dashboard.
 
-## 🚀 Key Features
+## Project Structure
 
-* **🕵️‍♂️ Hybrid AI Detection:** Combines **YOLOv8** (for person tracking) and **MediaPipe Pose** (for detailed action recognition) to reduce false positives.
-* **🧠 Action Recognition:** Uses a custom-trained **LSTM Neural Network** to distinguish between *normal shopping*, *phone usage*, and *suspicious concealment*.
-* **📱 Real-Time Mobile App:** A Flutter-based admin dashboard to view live camera feeds and receive security alerts.
-* **💬 WhatsApp Integration:** Triggers automated WhatsApp alerts with timestamps and camera IDs when theft is detected.
-* **🎯 Smart Zoning:** Allows setting "High-Value Zones" (ROI) where detection sensitivity is increased.
+- **App_Frontend/** - Frontend application
+- **Server_Backend/** - Backend server
+- **Shoplifting_Detection/** - Shoplifting detection module
+- **dataset/** - Data files and datasets
+- **docs/** - Documentation
 
-## 🛠️ Tech Stack
+## Getting Started
 
-### **Backend (The Brain)**
-* **Language:** Python 3.9
-* **Framework:** Flask (API Server)
-* **AI Models:** YOLOv8-Pose (Ultralytics), MediaPipe (Google), TensorFlow/Keras (LSTM)
-* **Automation:** PyWhatKit (WhatsApp Automation)
+[Add setup instructions here]
 
-### **Frontend (The Interface)**
-* **Framework:** Flutter (Dart)
-* **Platform:** Android / iOS / Windows
+## Features
 
-## 📦 Installation & Setup
+[Add features here]
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/YOUR_USERNAME/Smart-Retail-Surveillance-System.git](https://github.com/YOUR_USERNAME/Smart-Retail-Surveillance-System.git)
-cd Smart-Retail-Surveillance-System
+## Installation
+
+[Add installation steps here]
+
+## Usage
+
+[Add usage instructions here]
+
+## License
+
+[Add license information here]
